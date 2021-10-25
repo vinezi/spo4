@@ -1,0 +1,105 @@
+﻿<Window x:Class="spo4.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:spo4"
+        mc:Ignorable="d"
+        Title="nier" Height="450" Width="800" Background="#1D202F">
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="auto"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            
+            <Grid Grid.Row="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <TextBox Text="1000" x:Name="textBox1" Grid.Row="0" Margin="0 5"/>
+                <TextBox Text="100" x:Name="textBox2" Grid.Row="1" Margin="0 5"/>
+                <TextBox Text="10" x:Name="textBox3" Grid.Row="2" Margin="0 5"/>
+            </Grid>
+
+            <ListBox Name="listBox1" Grid.Row="1" Margin="0 5"/>
+            <ListBox Name="listBox2" Grid.Row="2" Margin="0 5"/>
+            <ListBox Name="listBox3" Grid.Row="3" Margin="0 5"/>
+        </Grid>
+
+        <Grid Margin="10 0" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                                       
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                                       
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <Button x:Name="StarThread" Grid.Row="0" Content="Запустить потоки" Margin="0 5" Click="StarThread_Click"/>
+            <Button x:Name="FirstThread" Grid.Row="1" Content="Поток №1 не запущен" IsEnabled="False" Margin="0 5" Click="FirstThread_Click"/>
+            <Button x:Name="SecondThread" Grid.Row="2" Content="Поток №2 не запущен" IsEnabled="False" Margin="0 5" Click="SecondThread_Click"/>
+            <Button x:Name="ThirdThread" Grid.Row="3" Content="Поток №3 не запущен" IsEnabled="False" Margin="0 5" Click="ThirdThread_Click"/>
+            <Button x:Name="Exit" Grid.Row="4" Content="Выход" Margin="0 5" Click="Exit_Click"/>
+
+            <TextBlock Style="{DynamicResource TextBlockStyle}" Text="Приоритет потока №1" Grid.Row="5" Margin="0 5" />
+            <Slider Foreground="Aqua" x:Name="Slider1" Grid.Row="6" Value="3" Minimum="1" Maximum="5" SelectionStart="0" TickPlacement="BottomRight"
+        IsSelectionRangeEnabled="True" ValueChanged="Slider1_ValueChanged" >
+                <Slider.Resources>
+                    <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#bc642e" />
+                    <SolidColorBrush x:Key="{x:Static SystemColors.ControlDarkDarkBrushKey}" Color="OrangeRed" />
+                </Slider.Resources>
+            </Slider>
+
+            <TextBlock Style="{DynamicResource TextBlockStyle}" Text="Приоритет потока №2" Grid.Row="7" Margin="0 5" />
+            <Slider Foreground="Aqua" x:Name="Slider2" Grid.Row="8" Value="3" Minimum="1" Maximum="5" SelectionStart="0" TickPlacement="BottomRight"
+        IsSelectionRangeEnabled="True" ValueChanged="Slider2_ValueChanged" >
+                <Slider.Resources>
+                    <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#5584a5" />
+                    <SolidColorBrush x:Key="{x:Static SystemColors.ControlDarkDarkBrushKey}" Color="OrangeRed" />
+                </Slider.Resources>
+            </Slider>
+
+            <TextBlock Style="{DynamicResource TextBlockStyle}" Text="Приоритет потока №3" Grid.Row="9" Margin="0 5" />
+            <Slider Foreground="Aqua" x:Name="Slider3" Grid.Row="10" Value="3" Minimum="1" Maximum="5" SelectionStart="0" TickPlacement="BottomRight" 
+        IsSelectionRangeEnabled="True" ValueChanged="Slider3_ValueChanged" >
+                <Slider.Resources>
+                    <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#dcc06c" />
+                    <SolidColorBrush x:Key="{x:Static SystemColors.ControlDarkDarkBrushKey}" Color="OrangeRed" />
+                </Slider.Resources>
+            </Slider>
+
+            <TextBlock Style="{DynamicResource TextBlockStyle}" Text="Длительность паузы" Grid.Row="11" Margin="0 5" />
+            <Slider Foreground="Aqua" x:Name="SliderPause" Grid.Row="12" Value="1" Minimum="1" Maximum="10" SelectionStart="0" TickPlacement="BottomRight"
+        IsSelectionRangeEnabled="True" ValueChanged="SliderPause_ValueChanged" >
+                <Slider.Resources>
+                    <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="OrangeRed" />
+                    <SolidColorBrush x:Key="{x:Static SystemColors.ControlDarkDarkBrushKey}" Color="OrangeRed" />
+                </Slider.Resources>
+            </Slider>
+        </Grid>
+        <RichTextBox IsReadOnly="True" BorderBrush="#626F73"  Background="Transparent" x:Name="richText" Grid.Column="2" MinWidth="90" VerticalScrollBarVisibility="Visible" FontWeight="ExtraBold"/>
+
+        <TextBlock Margin="5 0" Grid.ColumnSpan="3" Text="v1.0.0" Foreground="White" Opacity=".6" FontSize="19" FontWeight="Light" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
+    </Grid>
+</Window>
